@@ -1,0 +1,14 @@
+name: Docker Python CI with Pytest
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Docker Image
+        run: docker build -t docker-python-test .
+      - name: Run Unit Tests
+        run: docker run docker-python-test
+
